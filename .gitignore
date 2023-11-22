@@ -1,0 +1,22 @@
+# Node.js dependencies
+node_modules/
+
+# Output of build tools
+dist/
+build/
+out/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Environment-specific files
+.env
+.env.local
+
+# Editor and IDE files
+.vscode/
+.idea/
+
+# Dependency lock files
+package-lock.json
