@@ -104,17 +104,17 @@ Template Name: Home
             <p class="mb-10 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('company_description') ?></p>
 
             <?php
-                $args = array(
-                    'post_type' => 'value',
-                    'posts_per_page' => -1,
-                    'order' => 'ASC',
-                );
+            $args = array(
+                'post_type' => 'value',
+                'posts_per_page' => -1,
+                'order' => 'ASC',
+            );
 
-                $values_query = new WP_Query($args);
+            $values_query = new WP_Query($args);
 
-                if ($values_query->have_posts()) :
-                    while ($values_query->have_posts()) : $values_query->the_post();
-                ?>
+            if ($values_query->have_posts()) :
+                while ($values_query->have_posts()) : $values_query->the_post();
+            ?>
                     
                     <div class="relative pl-9 mb-2">
                         <h4 class="inline text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black">
@@ -126,16 +126,77 @@ Template Name: Home
                         <p class="inline text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('value_description') ?></p>
                     </div>
 
-                <?php
-                    endwhile;
-                    wp_reset_postdata();
-                else :
-                    echo 'Hiba az értékek betöltésekor.';
-                endif;
-                ?>
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+                echo 'Hiba az értékek betöltésekor.';
+            endif;
+            ?>
         </div>
     </div>
 </section>
+
+<!-- Team Section -->
+<div class="bg-whitesmoke py-10 sm:py-24 relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+        <div class="mx-auto max-w-2xl">
+            <div class="mb-16 flex justify-center">
+                <h2 class="text-6xl font-secondary font-bold tracking-tight text-lightpink sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-12"><?php the_field('team_heading') ?></h2>
+                <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-3xl relative z-20"><?php the_field('team_subheading') ?></h3>
+            </div>
+        </div>
+
+        <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            
+            <?php
+            $args = array(
+                'post_type' => 'team-member',
+                'posts_per_page' => -1,
+                'order' => 'ASC',
+            );
+
+            $members_query = new WP_Query($args);
+
+            if ($members_query->have_posts()) :
+
+                while ($members_query->have_posts()) : $members_query->the_post();
+                    ?>
+                    <li>
+                        <?php $member_image = get_field('member_image'); ?>
+                        <?php if ($member_image) : ?>
+                            <img src="<?php echo esc_url($member_image['url']); ?>" alt="<?php echo esc_attr($member_image['alt']); ?>" class="mx-auto h-56 w-56 rounded-full object-cover transition duration-300 ease-in-out hover:scale-110">
+                        <?php endif; ?>
+                        <h4 class="mt-6 text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black"><?php the_title(); ?></h4>
+                        <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink"><?php the_field('member_position'); ?></p>
+                        <ul role="list" class="mt-6 flex justify-center gap-x-6">
+                            <li>
+                                <a href="<?php echo esc_url(get_field('member_social_link')); ?>" class="text-lightpink hover:text-darkpink">
+                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+                                        <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:<?php echo esc_attr(get_field('member_phone_number')); ?>" class="text-lightpink hover:text-darkpink">
+                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                                        <path d="M12 0H2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM7.5 17.5h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2ZM12 13H2V4h10v9Z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+                echo 'Hiba a betöltéskor.';
+            endif;
+            ?>
+        </ul>
+    </div>
+</div>
 
 </main>
 
