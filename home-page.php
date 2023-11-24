@@ -23,7 +23,7 @@ Template Name: Home
         </div>
         <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
             <?php $hero_image = get_field('hero_image'); ?>
-            <img class="aspect-[3/2] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php echo esc_attr($hero_image['alt']); ?>">  
+            <img class="aspect-[3/2] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full shadow-xl " src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php echo esc_attr($hero_image['alt']); ?>">  
         </div>
     </div>
 </section>
@@ -60,7 +60,7 @@ Template Name: Home
                                 <?php endif; ?>
                             </div>
                             <div class="w-8/12">
-                                <h4 class="text-sm sm:text-base font-primary font-semibold leading-7 tracking-tight text-black">
+                                <h4 class="text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black">
                                     <?php the_field('service_name'); ?>
                                 </h4>
                                 <p class="mt-1 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('service_description'); ?></p>
@@ -80,6 +80,59 @@ Template Name: Home
                 ?>
 
             </dl>
+        </div>
+    </div>
+</section>
+
+<!-- Company & Values Section -->
+<section class="relative bg-lightpink">
+    <div class="relative h-80 overflow-hidden md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">
+        <?php $company_image = get_field('company_image'); ?>
+        <?php if ($company_image) : ?>
+            <img src="<?php echo esc_url($company_image['url']); ?>" alt="<?php echo esc_attr($company_image['alt']); ?>" class="h-full w-full object-cover">
+        <?php endif; ?>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl py-10 sm:pt-24 sm:pb-16 lg:px-8">
+        <div class="pl-6 pr-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pl-24 lg:pr-0 xl:pl-32">
+
+            <div class="mb-10 flex justify-center">
+                <h2 class="text-6xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-12"><?php the_field('company_heading') ?></h2>
+                <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-3xl relative z-20"><?php the_field('company_subheading') ?></h3>
+            </div>
+
+            <p class="mb-10 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('company_description') ?></p>
+
+            <?php
+                $args = array(
+                    'post_type' => 'value',
+                    'posts_per_page' => -1,
+                    'order' => 'ASC',
+                );
+
+                $values_query = new WP_Query($args);
+
+                if ($values_query->have_posts()) :
+                    while ($values_query->have_posts()) : $values_query->the_post();
+                ?>
+                    
+                    <div class="relative pl-9 mb-2">
+                        <h4 class="inline text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-darkpink" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            <?php the_field('value_name') ?>
+                        </h4>
+                        <p class="inline text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('value_description') ?></p>
+                    </div>
+
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else :
+                    echo 'Hiba az értékek betöltésekor.';
+                endif;
+                ?>
         </div>
     </div>
 </section>
