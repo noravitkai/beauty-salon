@@ -198,6 +198,40 @@ Template Name: Home
     </div>
 </div>
 
+<!-- Contact Section -->
+<section class="bg-lightpink py-10 sm:py-24 relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-16 flex justify-center">
+            <h2 class="text-6xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-12"><?php the_field('contact_heading') ?></h2>
+            <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-3xl relative z-20"><?php the_field('contact_subheading') ?></h3>
+        </div>
+
+        <form accept-charset="UTF-8" action="https://www.formbackend.com/f/be68403e9bd86075" method="POST" class="flex flex-wrap justify-center">
+            <div class="mb-4 mx-2 flex-grow">
+                <input type="text" id="last-name" name="last-name" required class="w-full shadow-sm focus:shadow-lg focus:border-darkpink border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary" placeholder="Vezetéknév">
+            </div>
+            <div class="mb-4 mx-2 flex-grow">
+                <input type="text" id="first-name" name="first-name" required class="w-full shadow-sm focus:shadow-lg focus:border-darkpink border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary" placeholder="Keresztnév">
+            </div>
+            <div class="mb-4 mx-2 flex-grow">
+                <input type="email" id="email" name="email" required class="w-full shadow-sm focus:shadow-lg focus:border-darkpink border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary" placeholder="Email cím">
+            </div>
+            <div class="mb-4 mx-2 flex-grow">
+                <input type="tel" id="phone" name="phone" class="w-full shadow-sm focus:shadow-lg focus:border-darkpink border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary" placeholder="Telefonszám">
+            </div>
+            <div class="mb-4 mx-2 w-full">
+                <textarea id="message" name="message" required class="w-full h-32 shadow-sm focus:shadow-lg focus:border-darkpink border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary" placeholder="Üzenet tartalma"></textarea>
+            </div>
+            <div class="mx-2 w-full flex justify-center">
+                <button type="submit" class="gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
+                    <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                    <span class="relative group-hover:text-lightpink">Küldés</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
 </main>
 
 <?php get_footer(); ?>
