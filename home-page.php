@@ -10,7 +10,7 @@ Template Name: Home
 
 <!-- Hero Section -->
 <section class="relative bg-lightpink">
-    <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-28 lg:px-8">
+    <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-28">
         <div class="px-6 py-10 sm:py-32 lg:col-span-7 lg:px-0 lg:py-48 xl:col-span-6 relative flex items-center justify-center">
             <div class="mx-auto max-w-2xl lg:mx-0 flex flex-col items-center text-center">
                 <h1 class="text-6xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-40 md:top-24 top-12 w-full"><?php the_field('hero_heading_1') ?></h1>
@@ -21,9 +21,9 @@ Template Name: Home
                 </button>
             </div>
         </div>
-        <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
+        <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0 shadow-xl">
             <?php $hero_image = get_field('hero_image'); ?>
-            <img class="aspect-[3/2] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full shadow-xl " src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php echo esc_attr($hero_image['alt']); ?>">  
+            <img class="aspect-[3/2] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php echo esc_attr($hero_image['alt']); ?>">  
         </div>
     </div>
 </section>
@@ -86,7 +86,7 @@ Template Name: Home
 
 <!-- Company & Values Section -->
 <section class="relative bg-lightpink">
-    <div class="relative h-80 overflow-hidden md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">
+    <div class="relative h-80 overflow-hidden md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2 shadow-xl">
         <?php $company_image = get_field('company_image'); ?>
         <?php if ($company_image) : ?>
             <img src="<?php echo esc_url($company_image['url']); ?>" alt="<?php echo esc_attr($company_image['alt']); ?>" class="h-full w-full object-cover">
@@ -165,7 +165,7 @@ Template Name: Home
                     <li>
                         <?php $member_image = get_field('member_image'); ?>
                         <?php if ($member_image) : ?>
-                            <img src="<?php echo esc_url($member_image['url']); ?>" alt="<?php echo esc_attr($member_image['alt']); ?>" class="mx-auto h-56 w-56 rounded-full object-cover transition duration-300 ease-in-out hover:scale-110">
+                            <img src="<?php echo esc_url($member_image['url']); ?>" alt="<?php echo esc_attr($member_image['alt']); ?>" class="mx-auto h-56 w-56 rounded-full object-cover shadow-sm transition duration-300 ease-in-out hover:scale-110">
                         <?php endif; ?>
                         <h4 class="mt-6 text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black"><?php the_title(); ?></h4>
                         <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink"><?php the_field('member_position'); ?></p>
