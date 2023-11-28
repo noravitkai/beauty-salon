@@ -161,7 +161,31 @@ Template Name: Cosmetics
             echo 'Hiba az alszolgáltatások betöltésekor.';
         endif;
         ?>
-    </section>
+    </div>
+</section>
+
+<!-- Call To Action -->
+<section class="bg-lightpink">
+    <div class="mx-auto max-w-7xl px-6 py-10 sm:py-24 lg:px-8 lg:flex lg:flex-row lg:items-center lg:justify-between">
+        <div class="lg:w-2/3">
+            <h2 class="text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('cta_heading') ?></h2>
+            <h3 class="mt-2 text-lg sm:text-xl font-primary leading-7 tracking-tight text-black"><?php the_field('cta_subheading') ?></h3>
+            <div class="mt-4 flex items-center gap-x-6 lg:flex-shrink-0">
+                <a href="tel:<?php echo esc_attr(get_field('phone_number')); ?>" class="group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
+                    <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                    <span class="relative group-hover:text-lightpink"><?php the_field('cta_button') ?></span>
+                </a>
+            </div>
+        </div>
+        <div class="hidden lg:flex lg:w-1/3 lg:justify-end lg:items-center">
+            <?php $cta_graphic = get_field('cta_graphic'); ?>
+            <?php if ($cta_graphic) : ?>
+                <img src="<?php echo esc_url($cta_graphic['url']); ?>" alt="<?php echo esc_attr($cta_graphic['alt']); ?>" class="h-60 w-auto drop-shadow">
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
 </main>
 
 <?php get_footer(); ?>
