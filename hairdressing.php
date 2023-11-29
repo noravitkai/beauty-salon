@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Cosmetics
+Template Name: Hairdressing
 */
 ?>
 
@@ -10,15 +10,15 @@ Template Name: Cosmetics
 
 <!-- Header -->
 <section class="relative isolate overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
-    <?php $cosmetics_header = get_field('cosmetics_header'); ?>
-    <?php if ($cosmetics_header) : ?>
+    <?php $hairdressing_header = get_field('hairdressing_header'); ?>
+    <?php if ($hairdressing_header) : ?>
         <div class="absolute inset-0 -z-10 h-full w-full object-cover">
-            <img src="<?php echo esc_url($cosmetics_header['url']); ?>" alt="<?php echo esc_attr($cosmetics_header['alt']); ?>" class="h-full w-full object-cover">
+            <img src="<?php echo esc_url($hairdressing_header['url']); ?>" alt="<?php echo esc_attr($hairdressing_header['alt']); ?>" class="h-full w-full object-cover">
             <div class="absolute inset-0 bg-darkpink opacity-30"></div>
         </div>
     <?php endif; ?>
     <div class="mx-auto max-w-2xl text-center">
-        <h1 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl"><?php the_field('cosmetics_heading') ?></h1>
+        <h1 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl"><?php the_field('hairdressing_heading') ?></h1>
     </div>
 </section>
 
@@ -29,35 +29,35 @@ Template Name: Cosmetics
         <!-- General Description -->
         <div class="mx-auto max-w-2xl lg:text-center">
             <div class="mb-10 sm:mb-16 flex justify-center">
-                <h2 class="text-5xl font-secondary font-bold tracking-tight text-lightpink sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('cosmetics_subheading_1') ?></h2>
-                <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black text-center sm:mt-10 sm:text-3xl relative z-20"><?php the_field('cosmetics_subheading_2') ?></h3>
+                <h2 class="text-5xl font-secondary font-bold tracking-tight text-lightpink sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('hairdressing_subheading_1') ?></h2>
+                <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black text-center sm:mt-10 sm:text-3xl relative z-20"><?php the_field('hairdressing_subheading_2') ?></h3>
             </div>
         </div>
 
         <div class="mx-auto lg:max-w-none">
             <?php
             $args = array(
-                'post_type'      => 'cosmetics-point',
+                'post_type'      => 'hairdressing-point',
                 'posts_per_page' => -1,
                 'order'          => 'ASC',
             );
 
-            $cosmetics_points_query = new WP_Query($args);
+            $hairdressing_points_query = new WP_Query($args);
 
-            if ($cosmetics_points_query->have_posts()) :
+            if ($hairdressing_points_query->have_posts()) :
             ?>
             <dl class="grid grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
                 <?php
-                while ($cosmetics_points_query->have_posts()) : $cosmetics_points_query->the_post();
+                while ($hairdressing_points_query->have_posts()) : $hairdressing_points_query->the_post();
                 ?>
                 <div class="flex flex-col">
                     <h4 class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
                         <svg class="h-5 w-5 flex-none text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                             <path d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z"/>
                         </svg>
-                        <?php the_field('cosmetics_point_title') ?>
+                        <?php the_field('hairdressing_point_title') ?>
                     </h4>
-                    <p class="mt-2 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('cosmetics_point_description') ?></p>
+                    <p class="mt-2 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('hairdressing_point_description') ?></p>
                 </div>
                 <?php
                 endwhile;
@@ -72,7 +72,7 @@ Template Name: Cosmetics
         <!-- Subservices -->
         <?php
         $args = array(
-            'post_type' => 'cosmetics-subservice',
+            'post_type' => 'hdressing-subservice',
             'posts_per_page' => -1,
             'order' => 'ASC',
         );
@@ -101,16 +101,16 @@ Template Name: Cosmetics
             <div id="<?php echo esc_attr($tab_id); ?>Content">
                 <!-- Tab Content For Treatment -->
                 <div class="hidden p-4 bg-transparent" id="<?php echo esc_attr($tab_id); ?>-treatment" role="tabpanel" aria-labelledby="<?php echo esc_attr($tab_id); ?>-treatment-tab">
-                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('cosmetics_treatment_name'); ?></h4>
-                    <p class="mb-3 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_description'); ?></p>
+                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('hairdressing_treatment_name'); ?></h4>
+                    <p class="mb-3 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('hairdressing_treatment_description'); ?></p>
                 </div>
 
                 <!-- Tab Content For Benefits -->
                 <div class="hidden p-4 bg-transparent" id="<?php echo esc_attr($tab_id); ?>-benefits" role="tabpanel" aria-labelledby="<?php echo esc_attr($tab_id); ?>-benefits-tab">
-                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('cosmetics_treatment_name'); ?> előnyei</h4>
+                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('hairdressing_treatment_name'); ?> előnyei</h4>
                     <ul role="list" class="space-y-4 text-black">
                         <?php
-                        $benefits_content = get_field('cosmetics_treatment_benefits');
+                        $benefits_content = get_field('hairdressing_treatment_benefits');
 
                         $benefits_lines = explode("\n", $benefits_content);
 
@@ -137,15 +137,15 @@ Template Name: Cosmetics
                     <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl">További információk</h4>
                     <dl class="grid max-w-screen-xl gap-4 mx-auto grid-cols-3 md:grid-cols-6">
                         <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_duration'); ?></p>
+                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('hairdressing_treatment_duration'); ?></p>
                             <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">perc</p>
                         </div>
                         <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_steps'); ?></p>
+                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('hairdressing_treatment_steps'); ?></p>
                             <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">lépés</p>
                         </div>
                         <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_products'); ?></p>
+                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('hairdressing_treatment_products'); ?></p>
                             <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">termék</p>
                         </div>
                     </dl>
@@ -234,5 +234,3 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-
-
