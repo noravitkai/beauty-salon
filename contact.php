@@ -113,7 +113,8 @@ Template Name: Contact
             </div>
 
             <!-- Contact Card -->
-            <div class="border-solid border-[0.075rem] border-black p-6 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105 lg:col-span-1 md:col-span-full sm:col-span-1">                <div class="mb-6 w-4/12">
+            <div class="border-solid border-[0.075rem] border-black p-6 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105 lg:col-span-1 md:col-span-full sm:col-span-1">
+                <div class="mb-6 w-4/12">
                     <?php $card_graphic_2 = get_field('card_graphic_2'); ?>
                     <?php if ($card_graphic_2) : ?>
                         <img src="<?php echo esc_url($card_graphic_2['url']); ?>" alt="<?php echo esc_attr($card_graphic_2['alt']); ?>" class="max-w-full mx-auto">
@@ -144,8 +145,48 @@ Template Name: Contact
                     </div>
                 </div>
             </div>
-
         </div>
+        
+        <!-- Google Maps !-->
+        <div class="mt-10">
+            <div class="border-solid border-[0.075rem] border-black shadow-sm hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2716.0254944110447!2d17.91151907639677!3d47.09857087114776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47699a63df582613%3A0x7d8f171d9d9ac6f!2zR0cgU3rDqXBzw6lnc3TDumRpw7M!5e0!3m2!1shu!2sdk!4v1701339005566!5m2!1shu!2sdk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form -->
+<section class="bg-lightpink py-10 sm:py-24 relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-16 flex justify-center">
+            <h2 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('contact_form_heading') ?></h2>
+            <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-3xl relative z-20"><?php the_field('contact_form_subheading') ?></h3>
+        </div>
+
+        <form accept-charset="UTF-8" action="https://www.formbackend.com/f/be68403e9bd86075" method="POST" class="flex flex-wrap justify-center">
+            <div class="mb-4 mx-2 flex-grow">
+                <input type="text" id="last-name" name="last-name" required class="w-full shadow-sm focus:shadow-lg focus:outline-darkpink focus:outline-none focus:ring-0 border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary rounded-none" placeholder="Vezetéknév">
+            </div>
+            <div class="mb-4 mx-2 flex-grow">
+                <input type="text" id="first-name" name="first-name" required class="w-full shadow-sm focus:shadow-lg focus:outline-darkpink focus:outline-none focus:ring-0 border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary rounded-none" placeholder="Keresztnév">
+            </div>
+            <div class="mb-4 mx-2 flex-grow">
+                <input type="email" id="email" name="email" required class="w-full shadow-sm focus:shadow-lg focus:outline-darkpink focus:outline-none focus:ring-0 border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary rounded-none" placeholder="Email cím">
+            </div>
+            <div class="mb-4 mx-2 flex-grow">
+                <input type="tel" id="phone" name="phone" class="w-full shadow-sm focus:shadow-lg focus:outline-darkpink border-solid focus:outline-none focus:ring-0 border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary rounded-none" placeholder="Telefonszám">
+            </div>
+            <div class="mb-4 mx-2 w-full">
+                <textarea id="message" name="message" required class="w-full h-32 shadow-sm focus:shadow-lg focus:outline-darkpink focus:outline-none focus:ring-0 border-solid border-[0.075rem] border-black bg-transparent p-2 placeholder-darkpink font-primary rounded-none" placeholder="Üzenet tartalma"></textarea>
+            </div>
+            <div class="mx-2 w-full flex justify-center">
+                <button type="submit" class="gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
+                    <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                    <span class="relative group-hover:text-lightpink">Küldés</span>
+                </button>
+            </div>
+        </form>
     </div>
 </section>
 
