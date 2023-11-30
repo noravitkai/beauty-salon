@@ -202,8 +202,8 @@ Template Name: Home
 <section class="bg-lightpink py-10 sm:py-24 relative">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mb-16 flex justify-center">
-            <h2 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('contact_heading') ?></h2>
-            <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-3xl relative z-20"><?php the_field('contact_subheading') ?></h3>
+            <h2 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('contact_form_heading') ?></h2>
+            <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-3xl relative z-20"><?php the_field('contact_form_subheading') ?></h3>
         </div>
 
         <form accept-charset="UTF-8" action="https://www.formbackend.com/f/be68403e9bd86075" method="POST" class="flex flex-wrap justify-center">
