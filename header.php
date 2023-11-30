@@ -9,7 +9,7 @@
 <body>
 
 <!-- Banner -->
-<div class="bg-darkpink px-4 py-2">
+<div class="bg-darkpink px-4 py-2 hidden md:block">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-center w-full">
         <p class="text-[0.5rem] sm:text-sm font-primary leading-7 tracking-tight text-whitesmoke text-center">
             <?php the_field('address') ?>
@@ -18,8 +18,8 @@
         <p class="text-[0.5rem] sm:text-sm font-primary leading-7 tracking-tight text-whitesmoke text-center">
             <?php the_field('opening_hours') ?>
         </p>
-        <span class="hidden md:block mx-1.5 sm:mx-8 text-xs sm:text-sm text-whitesmoke">|</span>
-        <p class="hidden md:block text-[0.5rem] sm:text-sm font-primary leading-7 tracking-tight text-whitesmoke text-center hover:text-lightpink">
+        <span class="mx-1.5 sm:mx-8 text-xs sm:text-sm text-whitesmoke">|</span>
+        <p class="text-[0.5rem] sm:text-sm font-primary leading-7 tracking-tight text-whitesmoke text-center hover:text-lightpink">
             <a href="tel:<?php echo str_replace(' ', '', get_field('phone_number')); ?>">
                 <?php the_field('phone_number') ?>
             </a>
