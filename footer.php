@@ -1,3 +1,33 @@
+<!-- Scroll To Top Button -->
+<button id="scroll-to-top-btn" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 bg-darkpink text-whitesmoke hover:scale-110 transition duration-300 ease-in-out rounded-full shadow-sm p-1 sm:p-2 hidden">
+    <svg class="h-3 w-3 sm:w-4 sm:h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7 7.674 1.3a.91.91 0 0 0-1.348 0L1 7"/>
+    </svg>
+</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var scrollToTopButton = document.getElementById('scroll-to-top-btn');
+
+        // Show or hide the button based on scroll position
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 200) {
+                scrollToTopButton.classList.remove('hidden');
+            } else {
+                scrollToTopButton.classList.add('hidden');
+            }
+        });
+
+        // Scroll to top when the button is clicked
+        scrollToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
 <footer class="bg-whitesmoke">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-10 sm:pt-24 pb-8 sm:pb-8">
         <div class="grid grid-cols-2 gap-4 sm:gap-6 gap-x-24 sm:grid-cols-3 mx-2">
