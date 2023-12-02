@@ -15,10 +15,10 @@ Template Name: Home
             <div class="mx-auto max-w-2xl lg:mx-0 flex flex-col items-center text-center">
                 <h1 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-40 md:top-24 top-14 w-full"><?php the_field('hero_heading_1') ?></h1>
                 <h2 class="mt-12 text-3xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-5xl relative z-20"><?php the_field('hero_heading_2') ?></h2>
-                <button class="mt-10 gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
+                <a href="#services-section" class="mt-10 gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
                     <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
                     <span class="relative group-hover:text-lightpink"><?php the_field('hero_button') ?></span>
-                </button>
+                </a>
             </div>
         </div>
         <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0 shadow-xl">
@@ -29,7 +29,7 @@ Template Name: Home
 </section>
 
 <!-- Services Section -->
-<section class="bg-whitesmoke py-10 sm:py-24 relative">
+<section class="bg-whitesmoke py-10 sm:py-24 relative" id="services-section">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mb-16 flex justify-center">
             <h2 class="text-5xl font-secondary font-bold tracking-tight text-lightpink sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('services_heading') ?></h2>
@@ -39,45 +39,50 @@ Template Name: Home
         <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-10 gap-y-10 sm:gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2 relative">
             <dl class="col-span-2 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
 
-                <?php
-                $args = array(
-                    'post_type' => 'service',
-                    'posts_per_page' => -1,
-                    'order' => 'ASC',
-                );
+            <?php
+            $args = array(
+                'post_type' => 'service',
+                'posts_per_page' => -1,
+                'order' => 'ASC',
+            );
 
-                $services_query = new WP_Query($args);
+            $services_query = new WP_Query($args);
 
-                if ($services_query->have_posts()) :
-                    while ($services_query->have_posts()) : $services_query->the_post();
-                ?>
-
-                        <div class="border-solid border-[0.075rem] border-black p-6 flex items-center shadow-sm hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                            <div class="mr-6 w-4/12">
-                                <?php $service_icon = get_field('service_icon'); ?>
-                                <?php if ($service_icon) : ?>
-                                    <img src="<?php echo esc_url($service_icon['url']); ?>" alt="<?php echo esc_attr($service_icon['alt']); ?>" class="max-w-full">
-                                <?php endif; ?>
-                            </div>
-                            <div class="w-8/12">
-                                <h4 class="text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black">
-                                    <?php the_field('service_name'); ?>
-                                </h4>
-                                <p class="mt-1 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('service_description'); ?></p>
-                                <button class="mt-6 gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
-                                    <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                                    <span class="relative group-hover:text-whitesmoke"><?php the_field('service_button'); ?></span>
-                                </button>
-                            </div>
+            if ($services_query->have_posts()) :
+                while ($services_query->have_posts()) : $services_query->the_post();
+            ?>
+                    <div class="border-solid border-[0.075rem] border-black p-6 flex items-center shadow-sm hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        <div class="mr-6 w-4/12">
+                            <?php $service_icon = get_field('service_icon'); ?>
+                            <?php if ($service_icon) : ?>
+                                <img src="<?php echo esc_url($service_icon['url']); ?>" alt="<?php echo esc_attr($service_icon['alt']); ?>" class="max-w-full">
+                            <?php endif; ?>
                         </div>
+                        <div class="w-8/12">
+                            <h4 class="text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black">
+                                <?php the_field('service_name'); ?>
+                            </h4>
+                            <p class="mt-1 mb-6 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('service_description'); ?></p>
+                            
+                            <?php
+                            $current_service_link = get_field('service_link');
+                            $service_permalink = home_url($current_service_link);
+                            ?>
+                            <a href="<?php echo esc_url($service_permalink); ?>" class="gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
+                                <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                                <span class="relative group-hover:text-whitesmoke">Tovább</span>
+                            </a>
 
-                    <?php
-                    endwhile;
-                    wp_reset_postdata();
-                else :
-                    echo 'Jelenleg nincs szolgáltatásunk.';
-                endif;
-                ?>
+                        </div>
+                    </div>
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+                echo 'Jelenleg nincs szolgáltatásunk.';
+            endif;
+            ?>
+
 
             </dl>
         </div>
@@ -171,7 +176,7 @@ Template Name: Home
                         <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink"><?php the_field('member_position'); ?></p>
                         <ul role="list" class="mt-6 flex justify-center gap-x-6">
                             <li>
-                                <a href="<?php echo esc_url(get_field('member_social_link')); ?>" class="text-lightpink hover:text-darkpink">
+                                <a href="<?php echo esc_url(get_field('member_social_link')); ?>" class="text-lightpink hover:text-darkpink" target="_blank" rel="noopener noreferrer">
                                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
                                         <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
                                     </svg>

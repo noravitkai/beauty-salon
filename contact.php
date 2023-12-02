@@ -140,7 +140,7 @@ Template Name: Contact
                             <?php the_field('social_heading') ?>
                         </h4>
                         <p class="mt-1 text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink hover:text-lightpink">
-                            <a href="<?php the_field('social_link'); ?>"><?php the_field('social_site'); ?></a>
+                            <a href="<?php the_field('social_link'); ?>" target="_blank" rel="noopener noreferrer"><?php the_field('social_site'); ?></a>
                         </p>
                     </div>
                 </div>

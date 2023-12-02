@@ -9,3 +9,8 @@ input:-webkit-autofill {
   background-color: #cfb6b2 !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
