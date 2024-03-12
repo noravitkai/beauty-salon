@@ -54,7 +54,8 @@
     <div class="container mx-auto max-w-7xl px-6 lg:px-8">
         <!-- Desktop Menu -->
         <ul class="hidden md:flex justify-between items-center w-full">
-            <li><a href="<?php echo get_home_url(); ?>" class="hover:text-darkpink text-xl sm:text-2xl font-secondary font-semibold leading-7 tracking-tight text-darkpink">GG Szépségstúdió</a></li>            <li><a href="<?php echo get_home_url(); ?>" class="hover:text-darkpink text-center">Főoldal</a></li>
+            <li><a href="<?php echo get_home_url(); ?>" class="hover:text-darkpink text-xl sm:text-2xl font-secondary font-semibold leading-7 tracking-tight text-darkpink">GG Szépségstúdió</a></li>
+            <li><a href="<?php echo get_home_url(); ?>" class="hover:text-darkpink text-center">Főoldal</a></li>
             <li class="relative group no-click">
                 <a href="#" class="flex items-center hover:text-darkpink text-center">
                     <span>Szolgáltatások</span>

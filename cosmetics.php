@@ -69,6 +69,36 @@ Template Name: Cosmetics
             </dl>
         </div>
 
+        <!-- List Of Subservices -->
+        <div class="mt-10 sm:mt-16 mb-10 sm:mb-16 bg-whitesmoke border-solid border-[0.075rem] border-black px-6 py-4 shadow-sm">
+            <h3 class="text-lg sm:text-xl font-primary font-bold tracking-tight text-black mb-2">Kozmetikai kezeléseink</h3>
+            <ul class="space-y-2">
+                <?php
+                $args = array(
+                    'post_type' => 'cosmetics-subservice',
+                    'posts_per_page' => -1,
+                    'order' => 'ASC',
+                );
+                $subservices_query = new WP_Query($args);
+
+                if ($subservices_query->have_posts()) :
+                    while ($subservices_query->have_posts()) : $subservices_query->the_post();
+                        $tab_id = sanitize_title(get_the_title());
+                ?>
+                <li class="flex items-center space-x-2">
+                    <svg class="h-5 w-5 flex-none text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                    </svg>
+                    <a href="#<?php echo esc_attr($tab_id); ?>Tab" class="inline-block max-w-full text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink"><?php the_title(); ?></a>
+                </li>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </ul>
+        </div>
+
         <!-- Subservices -->
         <?php
         $args = array(
@@ -91,7 +121,7 @@ Template Name: Cosmetics
                     <button id="<?php echo esc_attr($tab_id); ?>-treatment-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-treatment" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-treatment" aria-selected="true" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke border-solid border-r-[0.075rem] border-black transition duration-300 ease-in-out">Leírás</button>
                 </li>
                 <li class="flex-grow">
-                    <button id="<?php echo esc_attr($tab_id); ?>-benefits-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-benefits" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-benefits" aria-selected="false" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke border-solid border-r-[0.075rem] border-black transition duration-300 ease-in-out">Előnyök</button>
+                    <button id="<?php echo esc_attr($tab_id); ?>-benefits-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-benefits" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-benefits" aria-selected="false" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke border-solid border-r-[0.075rem] border-black transition duration-300 ease-in-out">Hatása</button>
                 </li>
                 <li class="flex-grow">
                     <button id="<?php echo esc_attr($tab_id); ?>-details-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-details" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-details" aria-selected="false" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke transition duration-300 ease-in-out">Időtartam, részletek</button>
@@ -102,12 +132,12 @@ Template Name: Cosmetics
                 <!-- Tab Content For Treatment -->
                 <div class="hidden p-4 bg-transparent" id="<?php echo esc_attr($tab_id); ?>-treatment" role="tabpanel" aria-labelledby="<?php echo esc_attr($tab_id); ?>-treatment-tab">
                     <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('cosmetics_treatment_name'); ?></h4>
-                    <p class="mb-3 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_description'); ?></p>
+                    <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_description'); ?></p>
                 </div>
 
                 <!-- Tab Content For Benefits -->
                 <div class="hidden p-4 bg-transparent" id="<?php echo esc_attr($tab_id); ?>-benefits" role="tabpanel" aria-labelledby="<?php echo esc_attr($tab_id); ?>-benefits-tab">
-                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('cosmetics_treatment_name'); ?> előnyei</h4>
+                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('cosmetics_treatment_name'); ?></h4>
                     <ul role="list" class="space-y-4 text-black">
                         <?php
                         $benefits_content = get_field('cosmetics_treatment_benefits');
@@ -123,7 +153,7 @@ Template Name: Cosmetics
                                     <svg class="flex-shrink-0 w-3.5 h-3.5 text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
-                                    <p class="leading-tight"><?php echo esc_html($benefit_line); ?></p>
+                                    <p class="leading-tight text-sm sm:text-base"><?php echo esc_html($benefit_line); ?></p>
                                 </li>
                         <?php
                             }
@@ -134,19 +164,19 @@ Template Name: Cosmetics
 
                 <!-- Tab Content For Details -->
                 <div class="hidden p-4 bg-transparent" id="<?php echo esc_attr($tab_id); ?>-details" role="tabpanel" aria-labelledby="<?php echo esc_attr($tab_id); ?>-details-tab">
-                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl">További információk</h4>
-                    <dl class="grid max-w-screen-xl gap-4 mx-auto grid-cols-3 md:grid-cols-6">
+                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('cosmetics_treatment_name'); ?></h4>
+                    <dl class="grid max-w-screen-xl gap-4 mx-auto grid-cols-1 md:grid-cols-3">
                         <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_duration'); ?></p>
+                            <p class="mb-0 md:mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_duration'); ?></p>
                             <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">perc</p>
                         </div>
                         <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_steps'); ?></p>
+                            <p class="mb-0 md:mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_steps'); ?></p>
                             <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">lépés</p>
                         </div>
                         <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_products'); ?></p>
-                            <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">termék</p>
+                            <p class="mb-0 md:mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_products'); ?></p>
+                            <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">termékcsalád</p>
                         </div>
                     </dl>
                 </div>
