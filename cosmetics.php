@@ -175,7 +175,16 @@ Template Name: Cosmetics
                             <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">lépés</p>
                         </div>
                         <div class="flex flex-col">
-                            <p class="mb-0 md:mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('cosmetics_treatment_products'); ?></p>
+                            <?php $treatment_link = get_field('cosmetics_treatment_link'); ?>
+                            <?php if ($treatment_link) : ?>
+                                <a href="<?php echo get_permalink($treatment_link); ?>" class="mb-0 md:mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black hover:text-darkpink" target="_blank">
+                                    <?php the_field('cosmetics_treatment_products'); ?>
+                                </a>
+                            <?php else : ?>
+                                <p class="mb-0 md:mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black">
+                                    <?php the_field('cosmetics_treatment_products'); ?>
+                                </p>
+                            <?php endif; ?>
                             <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">termékcsalád</p>
                         </div>
                     </dl>
