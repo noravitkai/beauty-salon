@@ -152,12 +152,13 @@ Template Name: Home
             </div>
         </div>
 
-        <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 sm:gap-y-16 gap-y-10 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4">
             
             <?php
             $args = array(
                 'post_type' => 'team-member',
                 'posts_per_page' => -1,
+                'orderby' => 'title',
                 'order' => 'ASC',
             );
 
@@ -168,20 +169,15 @@ Template Name: Home
                 while ($members_query->have_posts()) : $members_query->the_post();
                     ?>
                     <li>
-                        <?php $member_image = get_field('member_image'); ?>
-                        <?php if ($member_image) : ?>
-                            <img src="<?php echo esc_url($member_image['url']); ?>" alt="<?php echo esc_attr($member_image['alt']); ?>" class="mx-auto h-56 w-56 rounded-full object-cover shadow-sm transition duration-300 ease-in-out hover:scale-110">
-                        <?php endif; ?>
+                    <?php $member_image_1 = get_field('member_image_1'); ?>
+                    <?php if ($member_image_1) : ?>
+                        <a href="<?php echo get_permalink( get_page_by_title( 'Rólunk' ) ); ?>">
+                            <img src="<?php echo esc_url($member_image_1['url']); ?>" alt="<?php echo esc_attr($member_image_1['alt']); ?>" class="mx-auto h-56 w-56 rounded-full object-cover shadow-sm transition duration-300 ease-in-out hover:scale-110">
+                        </a>
+                    <?php endif; ?>
                         <h4 class="mt-6 text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black"><?php the_title(); ?></h4>
                         <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink"><?php the_field('member_position'); ?></p>
                         <ul role="list" class="mt-6 flex justify-center gap-x-6">
-                            <li>
-                                <a href="<?php echo esc_url(get_field('member_social_link')); ?>" class="text-lightpink hover:text-darkpink" target="_blank" rel="noopener noreferrer">
-                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
-                                        <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
-                                    </svg>
-                                </a>
-                            </li>
                             <li>
                                 <a href="tel:<?php echo esc_attr(get_field('member_phone_number')); ?>" class="text-lightpink hover:text-darkpink">
                                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">

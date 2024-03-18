@@ -70,6 +70,7 @@
                     <a href="<?php echo get_permalink(get_page_by_title('Természetgyógyászat')); ?>" class="block px-2 py-0.5 text-black hover:text-darkpink">Természetgyógyászat</a>
                 </div>
             </li>
+            <li><a href="<?php echo get_permalink(get_page_by_title('Rólunk')); ?>" class="hover:text-darkpink text-center">Rólunk</a></li>
             <li><a href="<?php echo get_permalink(get_page_by_title('Galéria')); ?>" class="hover:text-darkpink text-center">Galéria</a></li>
             <li><a href="<?php echo get_permalink(get_page_by_title('Blog')); ?>" class="hover:text-darkpink text-center">Blog</a></li>
             <li><a href="<?php echo get_permalink(get_page_by_title('Kapcsolat')); ?>" class="hover:text-darkpink text-center">Kapcsolat</a></li>
@@ -97,6 +98,7 @@
         <li><a href="<?php echo get_permalink(get_page_by_title('Fodrászat')); ?>" class="hover:text-darkpink px-6">Fodrászat</a></li>
         <li><a href="<?php echo get_permalink(get_page_by_title('Manikűr-pedikűr')); ?>" class="hover:text-darkpink px-6">Manikűr-pedikűr</a></li>
         <li><a href="<?php echo get_permalink(get_page_by_title('Természetgyógyászat')); ?>" class="hover:text-darkpink px-6">Természetgyógyászat</a></li>
+        <li><a href="<?php echo get_permalink(get_page_by_title('Rólunk')); ?>" class="hover:text-darkpink px-6">Rólunk</a></li>
         <li><a href="<?php echo get_permalink(get_page_by_title('Galéria')); ?>" class="hover:text-darkpink px-6">Galéria</a></li>
         <li><a href="<?php echo get_permalink(get_page_by_title('Blog')); ?>" class="hover:text-darkpink px-6">Blog</a></li>
         <li><a href="<?php echo get_permalink(get_page_by_title('Kapcsolat')); ?>" class="hover:text-darkpink px-6">Kapcsolat</a></li>

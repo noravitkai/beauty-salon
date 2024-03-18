@@ -34,7 +34,7 @@ Template Name: Blog
             $args = array(
                 'post_type'      => 'blogpost',
                 'posts_per_page' => -1,
-                'order'          => 'ASC',
+                'order'          => 'DESC',
             );
 
             $blogposts_query = new WP_Query($args);

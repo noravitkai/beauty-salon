@@ -64,6 +64,9 @@
                     <a href="<?php echo get_permalink(get_page_by_title('Természetgyógyászat')); ?>" class="hover:text-darkpink">Természetgyógyászat</a>
                     </li>
                     <li class="mb-1 sm:mb-4">
+                    <a href="<?php echo get_permalink(get_page_by_title('Rólunk')); ?>" class="hover:text-darkpink">Rólunk</a>
+                    </li>
+                    <li class="mb-1 sm:mb-4">
                     <a href="<?php echo get_permalink(get_page_by_title('Galéria')); ?>" class="hover:text-darkpink">Galéria</a>
                     </li>
                     <li class="mb-1 sm:mb-4">

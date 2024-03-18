@@ -51,7 +51,7 @@
                     'posts_per_page' => 3,
                     'meta_key' => 'blogpost_date',
                     'orderby' => 'meta_value',
-                    'order' => 'ASC',
+                    'order' => 'DESC',
                     'post__not_in' => array(get_the_ID()),
                 );
 
