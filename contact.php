@@ -53,13 +53,21 @@ Template Name: Contact
                         </h4>
                         <p class="mt-1 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php echo nl2br(get_field('location')); ?></p>
                     </div>
-                    <div>
+                    <div class="mb-4">
                         <h4 class="text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black flex items-center justify-center">
                             <svg class="inline-block w-4 h-4 text-black mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg>
                             <?php the_field('business_hours_heading') ?></h4>
                         <p class="mt-1 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php echo nl2br(get_field('business_hours_schedule')); ?></p>
+                    </div>
+                    <div>
+                        <h4 class="text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black flex items-center justify-center">
+                            <svg class="inline-block w-5 h-5 text-black mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M6 14h2m3 0h5M3 7v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1Z"/>
+                            </svg>
+                            <?php the_field('payment_heading') ?></h4>
+                        <p class="mt-1 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php echo nl2br(get_field('payment_methods')); ?></p>
                     </div>
                 </div>
             </div>
@@ -68,7 +76,7 @@ Template Name: Contact
             <div class="border-solid border-[0.075rem] border-black p-6 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
                 <div>
                     <div>
-                        <h4 class="text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black flex items-center justify-content">
+                        <h4 class="mb-4 text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black flex items-center justify-content">
                             <svg class="inline-block w-4 h-4 text-black mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16.344 12.168-1.4-1.4a1.98 1.98 0 0 0-2.8 0l-.7.7a1.98 1.98 0 0 1-2.8 0l-2.1-2.1a1.98 1.98 0 0 1 0-2.8l.7-.7a1.981 1.981 0 0 0 0-2.8l-1.4-1.4a1.828 1.828 0 0 0-2.8 0C-.638 5.323 1.1 9.542 4.78 13.22c3.68 3.678 7.9 5.418 11.564 1.752a1.828 1.828 0 0 0 0-2.804Z"/>
                             </svg>
@@ -79,6 +87,7 @@ Template Name: Contact
                         $args = array(
                             'post_type' => 'team-member',
                             'posts_per_page' => -1,
+                            'orderby' => 'title',
                             'order' => 'ASC',
                         );
 

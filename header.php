@@ -34,8 +34,8 @@
         </p>
         <span class="mx-1.5 sm:mx-8 text-xs sm:text-sm text-whitesmoke">|</span>
         <p class="text-[0.5rem] sm:text-sm font-primary leading-7 tracking-tight text-whitesmoke text-center hover:text-lightpink">
-            <a href="tel:<?php echo str_replace(' ', '', get_field('phone_number')); ?>">
-                <?php the_field('phone_number') ?>
+            <a href="<?php echo get_permalink(get_page_by_title('Kapcsolat')); ?>">
+                <?php the_field('appointment') ?>
             </a>
         </p>
 

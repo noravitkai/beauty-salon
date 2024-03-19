@@ -52,7 +52,7 @@ Template Name: Team
                 <div class="sm:w-1/4 w-1/2">
                     <?php $member_image_2 = get_field('member_image_2'); ?>
                     <?php if ($member_image_2) : ?>
-                        <img src="<?php echo esc_url($member_image_2['url']); ?>" alt="<?php echo esc_attr($member_image_2['alt']); ?>" class="object-cover shadow-sm transition duration-300 ease-in-out hover:scale-110">
+                        <img src="<?php echo esc_url($member_image_2['url']); ?>" alt="<?php echo esc_attr($member_image_2['alt']); ?>" class="object-cover rounded-full shadow-sm transition duration-300 ease-in-out hover:scale-110">
                     <?php endif; ?>
                 </div>
                 <div class="sm:w-3/4 w-full">
@@ -94,12 +94,15 @@ Template Name: Team
         <div class="lg:w-2/3">
             <h2 class="text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('cta_heading') ?></h2>
             <h3 class="mt-2 text-lg sm:text-xl font-primary leading-7 tracking-tight text-black"><?php the_field('cta_subheading') ?></h3>
-            <div class="mt-4 flex items-center gap-x-6 lg:flex-shrink-0">
-                <a href="tel:<?php echo esc_attr(get_field('phone_number')); ?>" class="group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
-                    <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                    <span class="relative group-hover:text-lightpink"><?php the_field('cta_button') ?></span>
-                </a>
-            </div>
+            <?php $cta_page_link = get_field('cta_page_link'); ?>
+            <?php if ($cta_page_link) : ?>
+                <div class="mt-4 flex items-center gap-x-6 lg:flex-shrink-0">
+                    <a href="<?php echo get_permalink($cta_page_link); ?>" class="group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
+                        <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                        <span class="relative group-hover:text-lightpink"><?php the_field('cta_button') ?></span>
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="hidden lg:flex lg:w-1/3 lg:justify-end lg:items-center">
             <?php $cta_graphic = get_field('cta_graphic'); ?>
