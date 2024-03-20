@@ -92,54 +92,59 @@ Template Name: Home
 </section>
 
 <!-- Company & Values Section -->
-<section class="relative bg-lightpink">
-    <div class="relative h-80 overflow-hidden md:absolute md:left-0 md:h-full md:w-1/2 lg:w-1/2 shadow-xl">
-        <?php $company_image = get_field('company_image'); ?>
-        <?php if ($company_image) : ?>
-            <img src="<?php echo esc_url($company_image['url']); ?>" alt="<?php echo esc_attr($company_image['alt']); ?>" class="h-full w-full object-cover">
-        <?php endif; ?>
-    </div>
+<section class="bg-lightpink py-10 sm:py-24 relative">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto grid grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-x-8">
 
-    <div class="relative mx-auto max-w-7xl py-10 sm:pt-24 sm:pb-16 lg:px-8">
-        <div class="pl-10 pr-10 lg:pr-0 md:ml-auto md:w-1/2 lg:w-1/2">
+            <div class="flex flex-col lg:order-2 mb-8 lg:mb-0">
+                <div class="mx-auto max-w-2xl">
+                    <div class="mb-10 flex justify-center">
+                        <h2 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('company_heading') ?></h2>
+                        <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-3xl relative z-20"><?php the_field('company_subheading') ?></h3>
+                    </div>
+                </div>
 
-            <div class="mb-10 flex justify-center">
-                <h2 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('company_heading') ?></h2>
-                <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-3xl relative z-20"><?php the_field('company_subheading') ?></h3>
+                <p class="mb-10 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('company_description') ?></p>
+
+                <?php
+                $args = array(
+                    'post_type' => 'value',
+                    'posts_per_page' => -1,
+                    'order' => 'ASC',
+                );
+
+                $values_query = new WP_Query($args);
+
+                if ($values_query->have_posts()) :
+                    while ($values_query->have_posts()) : $values_query->the_post();
+                ?>
+
+                <div class="relative pl-9 mb-2">
+                    <h4 class="inline text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black">
+                        <svg class="absolute left-0 top-1 h-5 w-5 text-darkpink" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                        </svg>
+                        <?php the_field('value_name') ?>
+                    </h4>
+                    <p class="inline text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('value_description') ?></p>
+                </div>
+
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else :
+                    echo 'Hiba az értékek betöltésekor.';
+                endif;
+                ?>
             </div>
 
-            <p class="mb-10 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('company_description') ?></p>
+            <div class="flex flex-col lg:order-1">
+                <?php $company_image = get_field('company_image'); ?>
+                <?php if ($company_image) : ?>
+                    <img src="<?php echo esc_url($company_image['url']); ?>" alt="<?php echo esc_attr($company_image['alt']); ?>" class="h-full w-full object-cover border-solid border-[0.075rem] border-black p-2 shadow-sm transition duration-300 ease-in-out hover:scale-105">
+                <?php endif; ?>
+            </div>
 
-            <?php
-            $args = array(
-                'post_type' => 'value',
-                'posts_per_page' => -1,
-                'order' => 'ASC',
-            );
-
-            $values_query = new WP_Query($args);
-
-            if ($values_query->have_posts()) :
-                while ($values_query->have_posts()) : $values_query->the_post();
-            ?>
-                    
-                    <div class="relative pl-9 mb-2">
-                        <h4 class="inline text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black">
-                            <svg class="absolute left-0 top-1 h-5 w-5 text-darkpink" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                            </svg>
-                            <?php the_field('value_name') ?>
-                        </h4>
-                        <p class="inline text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('value_description') ?></p>
-                    </div>
-
-            <?php
-                endwhile;
-                wp_reset_postdata();
-            else :
-                echo 'Hiba az értékek betöltésekor.';
-            endif;
-            ?>
         </div>
     </div>
 </section>

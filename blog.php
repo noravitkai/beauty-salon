@@ -30,24 +30,22 @@ Template Name: Blog
             <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black text-center sm:mt-10 sm:text-3xl relative z-20"><?php the_field('blog_subheading_2') ?></h3>
         </div>
 
+
         <?php
-        // Pagination
-        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        $args = array(
-            'post_type'      => 'blogpost',
-            'posts_per_page' => 12,
-            'order'          => 'DESC',
-            'paged'          => $paged,
-        );
+            $args = array(
+                'post_type'      => 'blogpost',
+                'posts_per_page' => -1,
+                'order'          => 'DESC',
+            );
 
         $blogposts_query = new WP_Query($args);
 
         if ($blogposts_query->have_posts()) :
-        ?>
-            <div class="mx-auto grid max-w-7xl auto-rows-fr grid-cols-1 gap-8 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                <?php
-                while ($blogposts_query->have_posts()) : $blogposts_query->the_post();
-                ?>
+            ?>
+                <div class="mx-auto grid max-w-7xl auto-rows-fr grid-cols-1 gap-8 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                    <?php
+                    while ($blogposts_query->have_posts()) : $blogposts_query->the_post();
+                    ?>
 
                     <article class="relative isolate flex flex-col justify-end overflow-hidden px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 shadow-sm hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
                         <a href="<?php the_permalink(); ?>" class="block">
@@ -68,26 +66,14 @@ Template Name: Blog
                         </a>
                     </article>
 
-                <?php endwhile; ?>
-            </div>
-
-            <!-- Pagination Links -->
-            <div class="pagination">
-                <?php
-                echo paginate_links(array(
-                    'total' => $blogposts_query->max_num_pages,
-                    'current' => $paged,
-                    'prev_text' => __('« Previous'),
-                    'next_text' => __('Next »'),
-                ));
-                ?>
-            </div>
-        <?php
-            wp_reset_postdata();
-        else :
-            echo 'Hiba az előnyök betöltésekor.';
-        endif;
-        ?>
+                    <?php endwhile; ?>
+                </div>
+            <?php
+                wp_reset_postdata();
+            else :
+                echo 'Hiba az előnyök betöltésekor.';
+            endif;
+            ?>
 
     </div>
 </section>
