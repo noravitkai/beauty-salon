@@ -16,7 +16,7 @@ Template Name: Home
         <h1 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14 w-full"><?php the_field('hero_heading_1') ?></h1>
         <h2 class="mt-12 text-3xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-5xl relative z-20"><?php the_field('hero_heading_2') ?></h2>
         <p class="mt-10 text-base sm:text-lg font-primary leading-7 tracking-tight text-black"><?php the_field('hero_description') ?></p>
-        <a href="#services-section" class="mt-10 gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
+        <a href="#szolgaltatasok" class="mt-10 gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
           <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
           <span class="relative group-hover:text-lightpink"><?php the_field('hero_button') ?></span>
         </a>
@@ -31,7 +31,7 @@ Template Name: Home
 
 
 <!-- Services Section -->
-<section class="bg-whitesmoke py-10 sm:py-24 relative" id="services-section">
+<section class="bg-whitesmoke py-10 sm:py-24 relative" id="szolgaltatasok">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mb-16 flex justify-center">
             <h2 class="text-5xl font-secondary font-bold tracking-tight text-lightpink sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('services_heading') ?></h2>
@@ -150,7 +150,7 @@ Template Name: Home
 </section>
 
 <!-- Team Section -->
-<div class="bg-whitesmoke py-10 sm:py-24 relative">
+<section class="bg-whitesmoke py-10 sm:py-24 relative">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <div class="mx-auto max-w-2xl">
             <div class="mb-16 flex justify-center">
@@ -204,7 +204,7 @@ Template Name: Home
             ?>
         </ul>
     </div>
-</div>
+</section>
 
 <!-- Contact Section -->
 <section class="bg-lightpink py-10 sm:py-24 relative">

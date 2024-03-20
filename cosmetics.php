@@ -89,7 +89,7 @@ Template Name: Cosmetics
                     <svg class="h-5 w-5 flex-none text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
                     </svg>
-                    <a href="#<?php echo esc_attr($tab_id); ?>Tab" class="inline-block max-w-full text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink"><?php the_title(); ?></a>
+                    <a href="#<?php echo esc_attr($tab_id); ?>" class="inline-block max-w-full text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink"><?php the_title(); ?></a>
                 </li>
                 <?php
                     endwhile;
@@ -116,7 +116,7 @@ Template Name: Cosmetics
         <div class="mt-16 w-full border-solid border-[0.075rem] border-black shadow-sm">
 
             <!-- Tabs For Subservices -->
-            <ul class="flex flex-wrap border-solid border-b-[0.075rem] border-black bg-lightpink text-sm sm:text-base font-primary leading-7 tracking-tight text-black" id="<?php echo esc_attr($tab_id); ?>Tab" data-tabs-target="#<?php echo esc_attr($tab_id); ?>Content" role="tablist">
+            <ul class="flex flex-wrap border-solid border-b-[0.075rem] border-black bg-lightpink text-sm sm:text-base font-primary leading-7 tracking-tight text-black" id="<?php echo esc_attr($tab_id); ?>" data-tabs-target="#<?php echo esc_attr($tab_id); ?>Content" role="tablist">
                 <li class="flex-grow">
                     <button id="<?php echo esc_attr($tab_id); ?>-treatment-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-treatment" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-treatment" aria-selected="true" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke border-solid border-r-[0.075rem] border-black transition duration-300 ease-in-out">Leírás</button>
                 </li>

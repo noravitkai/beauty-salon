@@ -69,6 +69,36 @@ Template Name: Natural Medicine
             </dl>
         </div>
 
+        <!-- List Of Subservices -->
+        <div class="mt-10 sm:mt-16 mb-10 sm:mb-16 bg-whitesmoke border-solid border-[0.075rem] border-black px-6 py-4 shadow-sm">
+            <h3 class="text-lg sm:text-xl font-primary font-bold tracking-tight text-black mb-2">Természetgyógyászati kezeléseink</h3>
+            <ul class="space-y-2">
+                <?php
+                $args = array(
+                    'post_type' => 'nmedicine-subservice',
+                    'posts_per_page' => -1,
+                    'order' => 'ASC',
+                );
+                $subservices_query = new WP_Query($args);
+
+                if ($subservices_query->have_posts()) :
+                    while ($subservices_query->have_posts()) : $subservices_query->the_post();
+                        $tab_id = sanitize_title(get_the_title());
+                ?>
+                <li class="flex items-center space-x-2">
+                    <svg class="h-5 w-5 flex-none text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                    </svg>
+                    <a href="#<?php echo esc_attr($tab_id); ?>" class="inline-block max-w-full text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink"><?php the_title(); ?></a>
+                </li>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </ul>
+        </div>
+
         <!-- Subservices -->
         <?php
         $args = array(
@@ -86,15 +116,12 @@ Template Name: Natural Medicine
         <div class="mt-16 w-full border-solid border-[0.075rem] border-black shadow-sm">
 
             <!-- Tabs For Subservices -->
-            <ul class="flex flex-wrap border-solid border-b-[0.075rem] border-black bg-lightpink text-sm sm:text-base font-primary leading-7 tracking-tight text-black" id="<?php echo esc_attr($tab_id); ?>Tab" data-tabs-target="#<?php echo esc_attr($tab_id); ?>Content" role="tablist">
+            <ul class="flex flex-wrap border-solid border-b-[0.075rem] border-black bg-lightpink text-sm sm:text-base font-primary leading-7 tracking-tight text-black" id="<?php echo esc_attr($tab_id); ?>" data-tabs-target="#<?php echo esc_attr($tab_id); ?>Content" role="tablist">
                 <li class="flex-grow">
                     <button id="<?php echo esc_attr($tab_id); ?>-treatment-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-treatment" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-treatment" aria-selected="true" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke border-solid border-r-[0.075rem] border-black transition duration-300 ease-in-out">Leírás</button>
                 </li>
                 <li class="flex-grow">
-                    <button id="<?php echo esc_attr($tab_id); ?>-benefits-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-benefits" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-benefits" aria-selected="false" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke border-solid border-r-[0.075rem] border-black transition duration-300 ease-in-out">Előnyök</button>
-                </li>
-                <li class="flex-grow">
-                    <button id="<?php echo esc_attr($tab_id); ?>-details-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-details" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-details" aria-selected="false" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke transition duration-300 ease-in-out">Időtartam, részletek</button>
+                    <button id="<?php echo esc_attr($tab_id); ?>-benefits-tab" data-tabs-target="<?php echo esc_attr($tab_id); ?>-benefits" type="button" role="tab" aria-controls="<?php echo esc_attr($tab_id); ?>-benefits" aria-selected="false" class="w-full inline-block p-4 hover:bg-darkpink hover:text-whitesmoke focus:bg-darkpink focus:text-whitesmoke transition duration-300 ease-in-out">Előnyök</button>
                 </li>
             </ul>
 
@@ -107,7 +134,7 @@ Template Name: Natural Medicine
 
                 <!-- Tab Content For Benefits -->
                 <div class="hidden p-4 bg-transparent" id="<?php echo esc_attr($tab_id); ?>-benefits" role="tabpanel" aria-labelledby="<?php echo esc_attr($tab_id); ?>-benefits-tab">
-                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('natural_medicine_treatment_name'); ?> előnyei</h4>
+                    <h4 class="mb-3 text-sm sm:text-base font-primary font-bold tracking-tight text-black"><?php the_field('natural_medicine_treatment_name'); ?> előnyei</h4>
                     <ul role="list" class="space-y-4 text-black">
                         <?php
                         $benefits_content = get_field('natural_medicine_treatment_benefits');
@@ -130,25 +157,6 @@ Template Name: Natural Medicine
                         }
                         ?>
                     </ul>
-                </div>
-
-                <!-- Tab Content For Details -->
-                <div class="hidden p-4 bg-transparent" id="<?php echo esc_attr($tab_id); ?>-details" role="tabpanel" aria-labelledby="<?php echo esc_attr($tab_id); ?>-details-tab">
-                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl">További információk</h4>
-                    <dl class="grid max-w-screen-xl gap-4 mx-auto grid-cols-3 md:grid-cols-6">
-                        <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('natural_medicine_treatment_duration'); ?></p>
-                            <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">perc</p>
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('natural_medicine_treatment_steps'); ?></p>
-                            <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">lépés</p>
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black"><?php the_field('natural_medicine_treatment_products'); ?></p>
-                            <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink">termék</p>
-                        </div>
-                    </dl>
                 </div>
 
             </div>
