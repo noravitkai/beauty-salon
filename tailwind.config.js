@@ -8,6 +8,7 @@ module.exports = {
         lightpink: "#CFB6B2",
         mediumgrey: "#BABABC",
         whitesmoke: "#F5F4F2",
+        marketingpuzzle: "#472692",
       },
       fontFamily: {
         primary: ["Lucida Grande", "ui-sans-serif", "system-ui"],

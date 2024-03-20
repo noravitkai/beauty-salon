@@ -5,29 +5,7 @@
     </svg>
 </button>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var scrollToTopButton = document.getElementById('scroll-to-top-btn');
-
-        // Show or hide the button based on scroll position
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 200) {
-                scrollToTopButton.classList.remove('hidden');
-            } else {
-                scrollToTopButton.classList.add('hidden');
-            }
-        });
-
-        // Scroll to top when the button is clicked
-        scrollToTopButton.addEventListener('click', function () {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
-
+<!-- Footer -->
 <footer class="bg-whitesmoke">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-10 sm:pt-24 pb-8 sm:pb-8">
         <div class="grid grid-cols-2 gap-4 sm:gap-6 gap-x-24 sm:grid-cols-3 mx-2">
@@ -123,7 +101,8 @@
 
         </div>
         <hr class="my-6 border-lightpink sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <p class="text-center text-xs sm:text-sm font-primary leading-7 tracking-tight text-darkpink">&copy; 2023. <span class="font-secondary text-base sm:text-lg">GG Szépségstúdió.</span> Minden jog fenntartva.</p>
+        <p class="text-center text-xs sm:text-sm font-primary leading-7 tracking-tight text-darkpink">&copy; 2024. <span class="font-secondary text-base sm:text-lg">GG Szépségstúdió.</span> Minden jog fenntartva.</p>
+        <p class="text-center text-xs sm:text-sm font-primary leading-7 tracking-tight text-darkpink">Weboldalt készítette: <a href="https://marketingpuzzle.hu/" class="text-xs sm:text-sm font-primary leading-7 tracking-tight text-marketingpuzzle" target="_blank">Marketing Puzzle</a></p>
     </div>
 </footer>
 

@@ -14,4 +14,9 @@ function ad_remove_gutenberg() {
     remove_post_type_support('page', 'editor');
 }
 add_action('init', 'ad_remove_gutenberg');
+
+function theme_enqueue_scripts() {
+    wp_enqueue_script('custom-script', get_template_directory_uri() . '/scripts.js', array(), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 ?>
