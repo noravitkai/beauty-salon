@@ -31,7 +31,7 @@ Template Name: Team
         </div>
 
         <!-- Team Members -->
-        <ul role="list" class="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 -mt-12 space-y-12 divide-y divide-gray-200">
+        <ul role="list" class="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 -mt-12 space-y-12 divide-y divide-lightpink">
             
         <?php
             $args = array(
@@ -48,7 +48,7 @@ Template Name: Team
                 while ($members_query->have_posts()) : $members_query->the_post();
                     ?>
         
-            <li class="flex flex-col gap-10 pt-12 sm:flex-row">
+            <li class="flex flex-col gap-10 pt-12 sm:flex-row items-center sm:items-start">
                 <div class="sm:w-1/4 w-1/2">
                     <?php $member_image_2 = get_field('member_image_2'); ?>
                     <?php if ($member_image_2) : ?>
@@ -56,20 +56,20 @@ Template Name: Team
                     <?php endif; ?>
                 </div>
                 <div class="sm:w-3/4 w-full">
-                    <h4 class="text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black"><?php the_field('member_name') ?></h4>
-                    <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink"><?php the_field('member_position'); ?></p>
+                    <h4 class="text-base sm:text-lg font-primary font-semibold leading-7 tracking-tight text-black text-center sm:text-left"><?php the_field('member_name') ?></h4>
+                    <p class="text-sm sm:text-base font-primary leading-7 tracking-tight text-darkpink text-center sm:text-left"><?php the_field('member_position'); ?></p>
                     <p class="mt-6 text-sm sm:text-base font-primary leading-7 tracking-tight text-black"><?php the_field('member_description'); ?></p>
                     
                     <div class="mt-6 flex items-center space-x-2">
-                        <svg class="h-5 w-5 flex-none text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
-                        </svg>
                         <?php $member_page_link = get_field('member_page_link'); ?>
                         <?php if ($member_page_link) : ?>
                         <a href="<?php echo get_permalink($member_page_link); ?>" class="text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink" target="_blank">
                             Szolgáltatások
                         </a>
                         <?php endif; ?>
+                        <svg class="h-5 w-5 flex-none text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                        </svg>
                     </div>
 
                 </div>

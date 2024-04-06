@@ -86,10 +86,10 @@ Template Name: Natural Medicine
                         $tab_id = sanitize_title(get_the_title());
                 ?>
                 <li class="flex items-center space-x-2">
+                    <a href="#<?php echo esc_attr($tab_id); ?>" class="inline-block max-w-full text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink"><?php the_title(); ?></a>
                     <svg class="h-5 w-5 flex-none text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
                     </svg>
-                    <a href="#<?php echo esc_attr($tab_id); ?>" class="inline-block max-w-full text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink"><?php the_title(); ?></a>
                 </li>
                 <?php
                     endwhile;
@@ -134,7 +134,7 @@ Template Name: Natural Medicine
 
                 <!-- Tab Content For Benefits -->
                 <div class="hidden p-4 bg-transparent" id="<?php echo esc_attr($tab_id); ?>-benefits" role="tabpanel" aria-labelledby="<?php echo esc_attr($tab_id); ?>-benefits-tab">
-                    <h4 class="mb-3 text-sm sm:text-base font-primary font-bold tracking-tight text-black"><?php the_field('natural_medicine_treatment_name'); ?> előnyei</h4>
+                    <h4 class="mb-3 text-2xl font-primary font-bold tracking-tight text-black sm:text-3xl"><?php the_field('natural_medicine_treatment_name'); ?></h4>
                     <ul role="list" class="space-y-4 text-black">
                         <?php
                         $benefits_content = get_field('natural_medicine_treatment_benefits');
@@ -150,7 +150,7 @@ Template Name: Natural Medicine
                                     <svg class="flex-shrink-0 w-3.5 h-3.5 text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
-                                    <p class="leading-tight"><?php echo esc_html($benefit_line); ?></p>
+                                    <p class="leading-tight text-sm sm:text-base"><?php echo esc_html($benefit_line); ?></p>
                                 </li>
                         <?php
                             }

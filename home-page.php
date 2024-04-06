@@ -9,26 +9,27 @@ Template Name: Home
 <main>
 
 <!-- Hero Section -->
-<section class="relative bg-lightpink">
-  <div class="py-10 sm:pt-24 sm:pb-20 lg:mx-auto lg:max-w-7xl lg:items-center relative">
-    <div class="px-6 lg:px-8">
-      <div class="mx-auto max-w-lg lg:mx-0 flex flex-col items-center text-center">
-        <h1 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14 w-full"><?php the_field('hero_heading_1') ?></h1>
-        <h2 class="mt-12 text-3xl font-primary font-bold tracking-tight text-black sm:mt-10 sm:text-5xl relative z-20"><?php the_field('hero_heading_2') ?></h2>
-        <p class="mt-10 text-base sm:text-lg font-primary leading-7 tracking-tight text-black"><?php the_field('hero_description') ?></p>
-        <a href="#szolgaltatasok" class="mt-10 gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
-          <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-          <span class="relative group-hover:text-lightpink"><?php the_field('hero_button') ?></span>
-        </a>
-      </div>
+<div class="relative bg-lightpink">
+    <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8">
+        <div class="px-6 pb-24 pt-10  lg:col-span-7   xl:col-span-6">
+            <div class="mx-auto max-w-xl flex flex-col items-center text-center px-8 xl:px-0">
+                <h1 class="text-5xl font-secondary font-bold tracking-tight text-whitesmoke sm:text-8xl opacity-50 absolute z-10 lg:top-12 md:top-12 top-14 w-full"><?php the_field('hero_heading_1') ?></h1>
+                <h2 class="mt-12 text-3xl font-primary font-bold tracking-tight text-black sm:mt-20 sm:text-5xl relative z-20"><?php the_field('hero_heading_2') ?></h2>
+                <p class="mt-10 text-base sm:text-lg font-primary leading-7 tracking-tight text-black"><?php the_field('hero_description') ?></p>
+                <a href="#szolgaltatasok" class="mt-10 gap-x-6 group relative overflow-hidden px-3.5 py-2.5 text-sm sm:text-base font-primary font-semibold text-black shadow-sm border-solid border-[0.075rem] border-black">
+                    <div class="absolute inset-0 w-3 bg-darkpink transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                    <span class="relative group-hover:text-lightpink"><?php the_field('hero_button') ?></span>
+                </a>
+            </div>
+        </div>
+        <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
+            <?php $hero_image = get_field('hero_image'); ?>
+            <?php if ($hero_image) : ?>
+                <img src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php echo esc_attr($hero_image['alt']); ?>" class="aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full">
+            <?php endif; ?>
+        </div>
     </div>
-  </div>
-  <div class="lg:absolute lg:inset-0 lg:left-1/2">
-    <?php $hero_image = get_field('hero_image'); ?>
-    <img class="h-64 w-full bg-gray-50 object-cover sm:h-96 lg:absolute lg:h-full" src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php echo esc_attr($hero_image['alt']); ?>">  
-  </div>
-</section>
-
+</div>
 
 <!-- Services Section -->
 <section class="bg-whitesmoke py-10 sm:py-24 relative" id="szolgaltatasok">

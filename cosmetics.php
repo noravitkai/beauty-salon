@@ -86,10 +86,10 @@ Template Name: Cosmetics
                         $tab_id = sanitize_title(get_the_title());
                 ?>
                 <li class="flex items-center space-x-2">
+                    <a href="#<?php echo esc_attr($tab_id); ?>" class="inline-block max-w-full text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink"><?php the_title(); ?></a>
                     <svg class="h-5 w-5 flex-none text-darkpink" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
                     </svg>
-                    <a href="#<?php echo esc_attr($tab_id); ?>" class="inline-block max-w-full text-sm sm:text-base font-primary leading-7 tracking-tight text-black hover:text-darkpink"><?php the_title(); ?></a>
                 </li>
                 <?php
                     endwhile;
@@ -177,9 +177,15 @@ Template Name: Cosmetics
                         <div class="flex flex-col">
                             <?php $treatment_link = get_field('cosmetics_treatment_link'); ?>
                             <?php if ($treatment_link) : ?>
-                                <a href="<?php echo get_permalink($treatment_link); ?>" class="mb-0 md:mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black hover:text-darkpink" target="_blank">
-                                    <?php the_field('cosmetics_treatment_products'); ?>
-                                </a>
+                                
+                                    <a href="<?php echo get_permalink($treatment_link); ?>" class=" text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black hover:text-darkpink flex flex-row items-center mb-0 md:mb-2 gap-2" target="_blank">
+                                        <?php the_field('cosmetics_treatment_products'); ?>
+                                
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                        </svg>
+                                    </a>
+                           
                             <?php else : ?>
                                 <p class="mb-0 md:mb-2 text-xl sm:text-2xl font-primary font-bold leading-7 tracking-tight text-black">
                                     <?php the_field('cosmetics_treatment_products'); ?>
