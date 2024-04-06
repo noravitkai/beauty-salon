@@ -29,10 +29,7 @@ Template Name: Gallery
             <h2 class="text-5xl font-secondary font-bold tracking-tight text-lightpink sm:text-8xl opacity-50 absolute z-10 lg:top-16 md:top-16 top-14"><?php the_field('gallery_subheading_1') ?></h2>
             <h3 class="mt-12 text-2xl font-primary font-bold tracking-tight text-black text-center sm:mt-10 sm:text-3xl relative z-20"><?php the_field('gallery_subheading_2') ?></h3>
         </div>
-        <?php
-        // Modula Gallery Shortcode
-        echo do_shortcode('[modula id="454"]');
-        ?>
+            <?php echo do_shortcode('[modula id="454"]') ?>
     </div>
 </section>
 

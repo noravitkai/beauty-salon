@@ -162,6 +162,14 @@ Template Name: Contact
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2716.0254944110447!2d17.91151907639677!3d47.09857087114776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47699a63df582613%3A0x7d8f171d9d9ac6f!2zR0cgU3rDqXBzw6lnc3TDumRpw7M!5e0!3m2!1shu!2sdk!4v1701339005566!5m2!1shu!2sdk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
+
+        <!-- Gallery !-->
+        <div class="mt-10">
+            <div>
+                <?php echo do_shortcode('[modula id="664"]'); ?>
+            </div>
+        </div>
+
     </div>
 </section>
 
