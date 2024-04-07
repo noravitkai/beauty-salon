@@ -56,7 +56,7 @@
         <ul class="hidden md:flex justify-between items-center w-full">
             <li><a href="<?php echo get_home_url(); ?>" class="hover:text-darkpink text-xl sm:text-2xl font-secondary font-semibold leading-7 tracking-tight text-darkpink">GG Szépségstúdió</a></li>
             <li><a href="<?php echo get_home_url(); ?>" class="hover:text-darkpink text-center">Főoldal</a></li>
-            <li class="relative group no-click">
+            <li class="relative group no-click z-50">
                 <a href="#" class="flex items-center hover:text-darkpink text-center">
                     <span>Szolgáltatások</span>
                     <svg class="ml-1 h-5 w-5 text-black" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
